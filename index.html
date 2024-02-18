@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js button</title>
+    <style>
+        #tex{
+            height: 4vh;
+            padding: 20vh;
+            width: 10vh;
+            background-color: pink;
+            border: 2px black dashed;
+            border-radius: 50%;
+            margin-bottom: 1vh;
+        }
+        button{
+            background-color: aqua;
+            border: none;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            height: 4vh;
+            border: 2px solid black;
+
+        }
+        button:active{
+            background-color: blue;
+        }
+        button:hover{
+            background-color: rgb(20, 204, 204);
+        }
+    </style>
+</head>
+<body>
+    <div id="tex">Click to Play</div>
+    <button  onclick="clickCount()">Machli</button>
+    <button  onclick="clickCount()">Paani mai gyi</button>
+    <button  onclick="clickCount()">Chapaak</button>
+</body>
+<script>
+    clickNo=0;
+    rounds=0;
+    let tex=document.querySelector("#tex");
+    
+    function clickCount () {
+        
+        let clicks = clickNo
+        for(let e=0;e<TriSeries.length-1;e++){
+            if(clickNo===TriSeries[e]){
+                rounds++;
+            }
+        }
+        tex.innerText=`round no.. ${rounds-1}`;
+        clickNo++;    
+    }
+    //triseries code
+    var res=0;
+    var TriSeries=[];
+    for(j=0;j<=10
+    ;j++){
+            res=res+j*3;
+            TriSeries[j]=res;
+            console.log(res)
+        }
+            // for(let j=0;j<=10;j++){
+                 
+            // result=0
+            // for(let i=1;i<=j+1;i++){
+
+            //    result= result+i;
+            //    (result>=3) ? result+1:{}
+            // }
+            // TriSeries[j]=result;  
+
+            // }
+            //end
+</script>
+</html>
