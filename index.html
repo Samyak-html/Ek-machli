@@ -10,6 +10,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            
+        }
+        .game{
+            position: relative;
+            display:flex;
+            align-items: center;
+            flex-direction: column;
+            
         }
         #tex{
             display: flex;
@@ -40,8 +48,8 @@
 
         }
         #restart{
-            padding: 3vh;
-            padding-bottom: 5vh;
+            
+            
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             color: black;
             
@@ -56,7 +64,8 @@
             background-color: rgb(5, 219, 5);
         } 
         .Ui-container{
-           background:url(bg.jpg); 
+           background:url(bg.jpg);
+           background-repeat: no-repeat;
            height: 70vh;
            display: flex;
            flex-direction: column;
@@ -69,8 +78,12 @@
         .controls-container{
             display: flex;
             flex-direction: row;
-            margin-top: 4vh;
-            
+            background-color: cornflowerblue;
+            justify-content:space-evenly;
+            align-items: center;
+            width: 30vw;
+            padding: 1vh;
+            : ;            
         }
         #Ret{
             color: white;
@@ -83,27 +96,48 @@
             background-color: orangered;
             visibility: hidden;
         }
+        #Machli{
+            width:10vh
+        }
+        #highscore{
+            color: black;
+            display: inline-block;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: medium;
+            border: 1px solid black;
+            border-radius: 10%;
+            padding: 1vh;
+            background-color: yellow;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 1vh;
+        }
       
     </style>
 </head>
-<body>
+<body><div class="game">
     <div class="Ui-container">
     <div id="tex">Click "Start" to Play</div>
-    <div id="Ret">Press 'Machli' to restart</div></div>
+    <div id="Ret">Press 'Machli' to restart</div>
+    <div id="highscore">Score</div></div>
+    
     <div class="controls-container">
     <button class="Choices" id="Machli" >Machli</button>
     <button class="Choices" id="Paani mai gyi" >Paani mai gyi</button>
     <button class="Choices" id="Chapaak" >Chapaak</button>
-    
-    <button id="restart" onclick="Restart()">Start</button></div>
+    <button id="restart" onclick="Restart()">Start</button></div></div>
 </body>
 <script>
-
+var highscore = document.querySelector("#highscore");
 var Tex=document.querySelector("#tex");
 var rest=document.querySelector("#restart");
 function Restart(){
+    let high=0;
+    document.querySelector("#highscore").innerText=`Score =${high}`;
     
     rest.style.visibility="hidden";
+    rest.style.position="relative"
     
     Tex.style.backgroundColor="greenyellow";
         Tex.style.color="black";
@@ -139,7 +173,7 @@ function Restart(){
         
     })});
         function roundCheck(){
-        
+            high+=5;
         for(let e=0;e<TriSeries.length-1;e++){
             if(clickNo===TriSeries[e]){
                 rounds++;
@@ -148,7 +182,8 @@ function Restart(){
         console.log(clickNo)
         TexMsg=`rounds no.. ${rounds-1}`;
         tex.innerText=TexMsg;
-        ++clickNo;    
+        ++clickNo;
+        document.querySelector("#highscore").innerText=`Score =${high}`;    
     }
     // function Restart(){
     //     clickNo=1;
@@ -167,6 +202,8 @@ function Restart(){
         Tex.style.backgroundColor="red";
         Tex.style.color="white";
         document.querySelector("#Ret").style.visibility="visible";
+        high=0;
+        document.querySelector("#highscore").innerText=`Score =${high}`;
     }   
     document.querySelector("#tex").innerText=TexMsg;
     
